@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}All rights reserved to Yonatan Kaminsky and Gilad Kinory
+<#if licenseLast??>
+${licenseLast}
+</#if>
