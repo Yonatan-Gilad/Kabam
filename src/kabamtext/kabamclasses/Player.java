@@ -9,6 +9,12 @@ package kabamtext.kabamclasses;
  */
 public class Player {
 
+    public Player(String Name, boolean PlayingUser) {
+        this.Name = Name;
+        this.PlayingUser = PlayingUser;
+        this.Cards = new Card[4];
+    }
+    
     // The name of the player
     private String Name;
 
@@ -50,6 +56,58 @@ public class Player {
     public void setPlayingUser(boolean PlayingUser) {
         this.PlayingUser = PlayingUser;
     }
+    
+    private Card[] Cards;
 
+    /**
+     * Get the value of Cards
+     *
+     * @return the value of Cards
+     */
+    public Card[] getCards() {
+        return Cards;
+    }
+
+    /**
+     * Set the value of Cards
+     *
+     * @param Cards new value of Cards
+     */
+    public void setCards(Card[] Cards) {
+        this.Cards = Cards;
+    }
+
+    /**
+     * Get the value of Card at specified index
+     *
+     * @param index the index of Cards
+     * @return the value of Cards at specified index
+     */
+    public Card getCard(int index) {
+        return this.Cards[index];
+    }
+
+    /**
+     * Set the value of Card at specified index.
+     *
+     * @param index the index of Cards
+     * @param Cards new value of Cards at specified index
+     */
+    public void setCard(int index, Card Cards) {
+        this.Cards[index] = Cards;
+    }
+
+
+    public Card SwitchCard(Card card, int LocationInArray) {
+        Card CurrentCard = this.getCard(LocationInArray);
+        this.setCard(LocationInArray, card);
+        return CurrentCard;
+    }
+    
+    public Card ShowCard(int CardLocationInArray) {
+        Card ChosenCard = this.getCard(CardLocationInArray);
+        ChosenCard.Flip();
+        return ChosenCard;
+    }
     
 }

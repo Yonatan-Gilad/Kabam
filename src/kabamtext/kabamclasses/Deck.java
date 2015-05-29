@@ -14,8 +14,33 @@ import java.util.Random;
  */
 public class Deck extends ArrayList<Card>{
 
-    public Deck() {
+    public Deck(boolean Showing, int initialCapacity) {
+        super(initialCapacity);
+        this.Showing = Showing;
+        this.RefreshDeckShowingStatus();
     }
+    
+    private boolean Showing;
+
+    /**
+     * Get the value of Showing
+     *
+     * @return the value of Showing
+     */
+    public boolean isShowing() {
+        return Showing;
+    }
+
+    /**
+     * Set the value of Showing
+     *
+     * @param Showing new value of Showing
+     */
+    public void setShowing(boolean Showing) {
+        this.Showing = Showing;
+        this.RefreshDeckShowingStatus();
+    }
+
     
     public void Shuffle() {
         ArrayList<Card> TempCardArrayList = new ArrayList<>(this);
@@ -38,6 +63,12 @@ public class Deck extends ArrayList<Card>{
         Card CardChosen = this.get(0);
         this.remove(0);
         return CardChosen;
+    }
+    
+    private void RefreshDeckShowingStatus() {
+        for (Card card: this) {
+            card.setShowing(this.isShowing());
+        }
     }
     
 }

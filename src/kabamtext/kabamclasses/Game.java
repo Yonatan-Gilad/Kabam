@@ -11,8 +11,14 @@ public class Game {
 
     public Game(Player[] Players) {
         this.Players = Players;
+        this.CardDeck = new Deck(false, 55);
+        this.PopulateCardDeck();
+        this.ThrowPile = new Deck(true, 0);
+        this.TurnId = 0;
+        this.Kabam = false;
+        this.KabamStarter = null;
     }
-    
+
     private Player[] Players;
 
     /**
@@ -52,7 +58,6 @@ public class Game {
     public void setPlayers(int index, Player Players) {
         this.Players[index] = Players;
     }
-
 
     private Deck CardDeck;
 
@@ -155,7 +160,6 @@ public class Game {
     }
 
     //  Functions
-
     /**
      *
      * @return The first card in the card deck
@@ -172,7 +176,19 @@ public class Game {
         return ThrowPile.getCard();
     }
 
-    
-    
+    public void PlayTurn(Player p) {
+
+    }
+
+    private void PopulateCardDeck() {
+        for (int CardValue = 1; CardValue <= 6; CardValue++) {
+            for (int SubId = 0; SubId < 4; SubId++) {
+                int CardId = (CardValue-1)*4 + SubId;
+                this.getCardDeck().add(new NumberCard(CardId, CardValue));
+            }
+        }
+        //Todo
+        
+    }
 
 }
